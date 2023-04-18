@@ -13,8 +13,9 @@ adj1 = adjList.AdjacencyList(10, 0, 0)
 # adj.addEdge(2,1)
 # adj.completeBuild()
 # adj.cycleBuild()
-adj.randomUniformBuild(50)
+# adj.randomUniformBuild(50)
 # adj.randomSkewedBuild(50)
+adj.randomPersonalBuild(50)
 adj.printList()
 # V = sys.argv[1]
 # E = sys.argv[2]

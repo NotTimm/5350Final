@@ -84,6 +84,20 @@ class AdjacencyList:
                 vert2 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)*.5))
             graph.addEdge(vert1, vert2)
 
+    def randomPersonalBuild(graph, conflicts):
+        if conflicts > len(graph.vertices) * (len(graph.vertices)-1)/2:
+            print("ERROR too many conflicts")
+            exit(420)
+        i = -1
+        while (i := i+1) < conflicts:
+            vert1 = 0
+            vert2 = 0
+
+            while vert1 == vert2 or graph.edgeExists(vert1, vert2):
+                vert1 = int(random.betavariate(.5,.5) * len(graph.vertices))
+                vert2 = int(random.betavariate(.5,.5) * len(graph.vertices))
+            graph.addEdge(vert1, vert2)
+
     ### Print Function ###
     
     def printList(self):
