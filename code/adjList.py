@@ -69,6 +69,20 @@ class AdjacencyList:
                 vert1 = random.randint(0, len(graph.vertices)-1)
                 vert2 = random.randint(0, len(graph.vertices)-1)
             graph.addEdge(vert1, vert2)
+    
+    def randomSkewedBuild(graph, conflicts):
+        if conflicts > len(graph.vertices) * (len(graph.vertices)-1)/2:
+            print("ERROR too many conflicts")
+            exit(420)
+        i = -1
+        while (i := i+1) < conflicts:
+            vert1 = 0
+            vert2 = 0
+
+            while vert1 == vert2 or graph.edgeExists(vert1, vert2):
+                vert1 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)*.5))
+                vert2 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)*.5))
+            graph.addEdge(vert1, vert2)
 
     ### Print Function ###
     
