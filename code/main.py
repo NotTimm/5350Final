@@ -14,8 +14,8 @@ adj1 = adjList.AdjacencyList(10, 0, 0)
 # adj.completeBuild()
 # adj.cycleBuild()
 # adj.randomUniformBuild(50)
-# adj.randomSkewedBuild(50)
-adj.randomPersonalBuild(75)
+adj.randomSkewedBuild(75)
+# adj.randomPersonalBuild(75)
 adj.printList()
 # V = sys.argv[1]
 # E = sys.argv[2]

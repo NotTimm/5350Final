@@ -80,8 +80,8 @@ class AdjacencyList:
             vert2 = 0
 
             while vert1 == vert2 or graph.edgeExists(vert1, vert2):
-                vert1 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)*.5))
-                vert2 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)*.5))
+                vert1 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)**.2))
+                vert2 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)**.2))
             graph.addEdge(vert1, vert2)
 
     def randomPersonalBuild(graph, conflicts):
