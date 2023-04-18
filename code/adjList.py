@@ -10,7 +10,7 @@ class Edge:
         self.next = next
 
 class AdjacencyList:
-    def __init__(self, vertCount, genType, conflicts):
+    def __init__(self, vertCount):
         self.vertices = []
         for i in range(vertCount):
             self.vertices.append(new := Vertice(0))
