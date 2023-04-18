@@ -78,7 +78,7 @@ class AdjacencyList:
             print("VertID: ", index, ", Degree: ", i.degree, " }", sep = "", end ="")
             cur = Edge(None, i.edges)
             while cur := cur.next:
-                print("->", cur.destination, end = " ")
+                print("->", cur.destination, sep = "", end = "")
             print()
 
 # if __name__ == '__main__':
