@@ -4,10 +4,9 @@ class Vertice:
         self.edges = None
 
 class Edge:
-    def __init__(self, origin, destination):
-        self.origin = origin
+    def __init__(self, destination, next):
         self.destination = destination
-        self.next = None
+        self.next = next
 
 class AdjacencyList:
     def __init__(self, vertCount, genType, conflicts):
@@ -28,15 +27,31 @@ class AdjacencyList:
         self.checkIDs(vert1, vert2)
         curEdge = self.vertices[vert1].edges
         while(curEdge):
-            if curEdge.origin == vert2:
+            if curEdge.destination == vert2:
                 return True
             curEdge = curEdge.next
         return False
     
+    def addEdge(self, vert1, vert2):
+        self.checkIDs(vert1, vert2)
+        edge1 = Edge(vert2, self.vertices[vert1].edges)
+        edge2 = Edge(vert1, self.vertices[vert2].edges)
+
+        self.vertices[vert1].edges = edge1
+        self.vertices[vert1].degree += 1
+
+        self.vertices[vert2].edges = edge2
+        self.vertices[vert2].degree += 1
+    
     def printList(self):
-        for i in range(len(self.vertices)):
-            print(self.vertices[i].degree, i, end = " ")
-        print()
+        print("Vert #: ", len(self.vertices))
+        for index, i in enumerate(self.vertices):
+            print("index:", index, ", degree:", i.degree, " }", sep = "", end ="")
+            cur = i.edges
+            while(cur):
+                print("->", cur.destination, end = " ")
+                cur = cur.next
+            print()
 
 # if __name__ == '__main__':
 #     lltest = LinkedList()

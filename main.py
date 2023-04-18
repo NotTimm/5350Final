@@ -7,6 +7,9 @@ print('Argument List:', str(sys.argv))
 #     print("Run with arguments V, E, G, and DIST")
 #     exit()
 adj = adjList.AdjacencyList(5, 0, 0)
+adj.addEdge(0,1)
+adj.addEdge(2,3)
+adj.addEdge(2,1)
 adj.printList()
 # V = sys.argv[1]
 # E = sys.argv[2]
