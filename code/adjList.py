@@ -13,8 +13,7 @@ class AdjacencyList:
     def __init__(self, vertCount, genType, conflicts):
         self.vertices = []
         for i in range(vertCount):
-            new = Vertice(0)
-            self.vertices.append(new)
+            self.vertices.append(new := Vertice(0))
 
     def checkIDs(self, vert1, vert2):
         if vert1 < 0 or vert1 >= len(self.vertices):
@@ -26,11 +25,10 @@ class AdjacencyList:
 
     def edgeExists(self, vert1, vert2):
         self.checkIDs(vert1, vert2)
-        curEdge = self.vertices[vert1].edges
-        while(curEdge):
+        curEdge = Edge(None, self.vertices[vert1].edges)
+        while curEdge := curEdge.next:
             if curEdge.destination == vert2:
                 return True
-            curEdge = curEdge.next
         return False
     
     def addEdge(self, vert1, vert2):
@@ -47,25 +45,23 @@ class AdjacencyList:
     ### Build Scenarios Below ###
 
     def completeBuild(graph):
-        vertI = 0
-        while vertI < len(graph.vertices)-1:
+        vertI = -1
+        while (vertI := vertI+1) < len(graph.vertices)-1:
             vertO = vertI+1
             graph.addEdge(vertI, vertO)
-            vertI += 1
     
     def cycleBuild(graph):
-        vertI = 0
-        while vertI < len(graph.vertices)-1:
+        vertI = -1
+        while (vertI := vertI+1) < len(graph.vertices)-1:
             graph.addEdge(vertI, vertI+1)
-            vertI += 1
         graph.addEdge(0, len(graph.vertices)-1)
 
     def randomUniformBuild(graph, conflicts):
         if conflicts > len(graph.vertices) * (len(graph.vertices)-1)/2:
             print("ERROR too many conflicts")
             exit(420)
-        i = 0
-        while i < conflicts:
+        i = -1
+        while (i := i+1) < conflicts:
             vert1 = 0
             vert2 = 0
 
@@ -73,7 +69,6 @@ class AdjacencyList:
                 vert1 = random.randint(0, len(graph.vertices)-1)
                 vert2 = random.randint(0, len(graph.vertices)-1)
             graph.addEdge(vert1, vert2)
-            i += 1
 
     ### Print Function ###
     
@@ -81,10 +76,9 @@ class AdjacencyList:
         print("Vert #: ", len(self.vertices))
         for index, i in enumerate(self.vertices):
             print("VertID: ", index, ", Degree: ", i.degree, " }", sep = "", end ="")
-            cur = i.edges
-            while(cur):
+            cur = Edge(None, i.edges)
+            while cur := cur.next:
                 print("->", cur.destination, end = " ")
-                cur = cur.next
             print()
 
 # if __name__ == '__main__':
