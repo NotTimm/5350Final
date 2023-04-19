@@ -13,7 +13,7 @@ class AdjacencyList:
     def __init__(self, vertCount):
         self.vertices = []
         for i in range(vertCount):
-            self.vertices.append(new := Vertice(0))
+            self.vertices.append(Vertice(0))
 
     def checkIDs(self, vert1, vert2):
         if vert1 < 0 or vert1 >= len(self.vertices):
