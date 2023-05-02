@@ -1,4 +1,4 @@
-import random
+import random, math
 class Vertice:
     def __init__(self, degree):
         self.degree = degree
@@ -80,8 +80,8 @@ class AdjacencyList:
             vert2 = 0
 
             while vert1 == vert2 or graph.edgeExists(vert1, vert2):
-                vert1 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)**.2))
-                vert2 = int(random.triangular(0,len(graph.vertices), len(graph.vertices)**.2))
+                vert1 = len(graph.vertices)-1-int(math.sqrt(4.0*2.0*float(random.randint(0,(len(graph.vertices)-1)*len(graph.vertices)/2))+1.0)/2.0-.5)
+                vert2 = len(graph.vertices)-1-int(math.sqrt(4.0*2.0*float(random.randint(0,(len(graph.vertices)-1)*len(graph.vertices)/2))+1.0)/2.0-.5)
             graph.addEdge(vert1, vert2)
 
     def randomPersonalBuild(graph, conflicts):
