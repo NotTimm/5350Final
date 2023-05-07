@@ -1,3 +1,4 @@
+import pickle
 import adjList
 import sys
 
@@ -7,7 +8,6 @@ print('Argument List:', str(sys.argv))
 #     print("Run with arguments V, E, G, and DIST")
 #     exit()
 adj = adjList.AdjacencyList(25)
-adj1 = adjList.AdjacencyList(10)
 # adj.addEdge(0,1)
 # adj.addEdge(2,3)
 # adj.addEdge(2,1)
@@ -15,6 +15,9 @@ adj1 = adjList.AdjacencyList(10)
 # adj.cycleBuild()
 # adj.randomUniformBuild(50)
 adj.randomSkewedBuild(75)
+# adj.save('test.poo')
+# with open('test.poo', 'rb') as file:
+#     adj1 = pickle.load(file) new save and load procedure
 # adj.randomPersonalBuild(75)
 adj.printList()
 # V = sys.argv[1]

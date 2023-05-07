@@ -1,4 +1,4 @@
-import random, math
+import random, math, pickle
 class Vertice:
     def __init__(self, degree):
         self.degree = degree
@@ -108,6 +108,11 @@ class AdjacencyList:
             while cur := cur.next:
                 print("->", cur.destination, sep = "", end = "")
             print()
+
+    def save(self, path):
+        with open(path, 'wb') as file:
+            pickle.dump(self, file)
+
 
 # if __name__ == '__main__':
 #     lltest = LinkedList()
