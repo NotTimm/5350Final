@@ -3,12 +3,14 @@ class Vertice:
     def __init__(self, degree):
         self.degree = degree
         self.edges = None
+        self.next = None
+        self.last = None
+        self.removed = False
 
 class Edge:
     def __init__(self, destination, next):
         self.destination = destination
         self.next = next
-        self.removed = False
 
 class AdjacencyList:
     def __init__(self, vertCount):
