@@ -17,13 +17,21 @@ class degreeList:
         if value.last != None or value.next != None:
             exit(69)
         print(degree)
-        temp = listVal(value, self.degrees[degree])
-        if self.degrees[degree] != None:
-            self.degrees[degree].last = temp
-        self.degrees[degree] = temp
+        temp = self.degrees[degree]
+        value.last = None
+        value.next = temp
+        if temp != None:
+            temp.last = value
+        self.degrees[degree] = value
+
+    def findSmallest(self):
+        for degree in self.degrees:
+            if degree != None:
+                return degree
+        return None
 
     def removeVert(self, adj, vertice):
-        vert = adj.vertices[vertice]
+        vert = vertice
         vert.removed = True
         curTemp = vert.edges
         while curTemp != None:

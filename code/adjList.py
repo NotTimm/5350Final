@@ -1,6 +1,7 @@
-import random, math, pickle
+import random, math, pickle, struct
 class Vertice:
-    def __init__(self, degree):
+    def __init__(self, degree, id):
+        self.id = id
         self.degree = degree
         self.edges = None
         self.next = None
@@ -16,7 +17,7 @@ class AdjacencyList:
     def __init__(self, vertCount):
         self.vertices = []
         for i in range(vertCount):
-            self.vertices.append(Vertice(0))
+            self.vertices.append(Vertice(0,i))
 
     def checkIDs(self, vert1, vert2):
         if vert1 < 0 or vert1 >= len(self.vertices):
@@ -50,8 +51,9 @@ class AdjacencyList:
     def completeBuild(graph):
         vertI = -1
         while (vertI := vertI+1) < len(graph.vertices)-1:
-            vertO = vertI+1
-            graph.addEdge(vertI, vertO)
+            vertO = vertI
+            while (vertO := vertO+1) < len(graph.vertices)-1:
+                graph.addEdge(vertI, vertO)
     
     def cycleBuild(graph):
         vertI = -1
@@ -126,6 +128,31 @@ class AdjacencyList:
         with open(path, 'wb') as file:
             pickle.dump(self, file)
 
+    def serialize(self, path):
+        with open(path, 'wb') as file:
+            file.write(struct.pack('<' + 'i', len(self.vertices)))
+            for vert in self.vertices:
+                cur = vert.edges
+                while cur != None:
+                    if cur.destination > vert.id:
+                        file.write(struct.pack('<' + 'i', cur.destination))
+                    cur = cur.next
+                file.write(struct.pack('<' + 'i', 0))
+
+    def deserialize( path):
+        with open(path, 'rb') as file:
+            read = file.read(4)
+            size = struct.unpack('<' + 'i', read)[0]
+            temp = AdjacencyList(size)
+            i = -1
+            while (i := i+1) < size:
+                while(True):
+                    read = file.read(4)
+                    dest = struct.unpack('<' +'i', read)[0]
+                    if dest == 0:
+                        break
+                    temp.addEdge(i, dest)
+            return temp
 
 # if __name__ == '__main__':
 #     lltest = LinkedList()
