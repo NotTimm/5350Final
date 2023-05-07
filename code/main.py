@@ -1,5 +1,5 @@
 import pickle
-import adjList
+import adjList, degList
 import sys
 
 print(len(sys.argv), 'arguments.')
@@ -19,7 +19,9 @@ adj.randomSkewedBuild(75)
 # with open('test.poo', 'rb') as file:
 #     adj1 = pickle.load(file) new save and load procedure
 # adj.randomPersonalBuild(75)
+deg = degList.degreeList(adj)
 adj.printList()
+deg.printList()
 # V = sys.argv[1]
 # E = sys.argv[2]
 # G = sys.argv[3]

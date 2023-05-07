@@ -8,6 +8,7 @@ class Edge:
     def __init__(self, destination, next):
         self.destination = destination
         self.next = next
+        self.removed = False
 
 class AdjacencyList:
     def __init__(self, vertCount):
@@ -108,6 +109,16 @@ class AdjacencyList:
             while cur := cur.next:
                 print("->", cur.destination, sep = "", end = "")
             print()
+    
+    def removeEdge(self, vert1, vert2):
+        vertTemp = self.vertices[vert1].edges
+        while vertTemp.destination != vert2:
+            vertTemp = vertTemp.next
+        vertTemp.removed = True
+        vertTemp = self.vertices[vert2].edges
+        while vertTemp.destination != vert1:
+            vertTemp = vertTemp.next
+        vertTemp.removed = True
 
     def save(self, path):
         with open(path, 'wb') as file:
