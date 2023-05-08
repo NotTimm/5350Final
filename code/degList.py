@@ -53,4 +53,13 @@ class degreeList:
         vert.next = None
     
     def printList(self):
-        print(self.degrees)
+        i = -1
+        while (i := i+1) < len(self.degrees):
+            print('['+str(i)+'°]:', end='')
+            cur = self.degrees[i]
+            while cur != None:
+                if cur != None:
+                    print(', ',end='')
+                print(cur.id,end='')
+                cur = cur.next
+            print()

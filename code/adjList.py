@@ -52,7 +52,7 @@ class AdjacencyList:
         vertI = -1
         while (vertI := vertI+1) < len(graph.vertices)-1:
             vertO = vertI
-            while (vertO := vertO+1) < len(graph.vertices)-1:
+            while (vertO := vertO+1) < len(graph.vertices):
                 graph.addEdge(vertI, vertO)
     
     def cycleBuild(graph):
@@ -99,8 +99,10 @@ class AdjacencyList:
             vert2 = 0
 
             while vert1 == vert2 or graph.edgeExists(vert1, vert2):
-                vert1 = int(random.betavariate(.5,.5) * len(graph.vertices))
-                vert2 = int(random.betavariate(.5,.5) * len(graph.vertices))
+                vert1 = int(math.pow(random.random(), 2) * float(len(graph.vertices)))
+                vert2 = int(math.pow(random.random(), 2) * float(len(graph.vertices)))
+                # vert1 = int(random.betavariate(.5,.5) * len(graph.vertices))
+                # vert2 = int(random.betavariate(.5,.5) * len(graph.vertices))
             graph.addEdge(vert1, vert2)
 
     ### Print Function ###
@@ -130,25 +132,23 @@ class AdjacencyList:
 
     def serialize(self, path):
         with open(path, 'wb') as file:
-            file.write(struct.pack('<' + 'i', len(self.vertices)))
+            file.write(struct.pack('<L', len(self.vertices)))
             for vert in self.vertices:
                 cur = vert.edges
                 while cur != None:
                     if cur.destination > vert.id:
-                        file.write(struct.pack('<' + 'i', cur.destination))
+                        file.write(struct.pack('<L', cur.destination))
                     cur = cur.next
-                file.write(struct.pack('<' + 'i', 0))
+                file.write(struct.pack('<L', 0))
 
     def deserialize( path):
         with open(path, 'rb') as file:
-            read = file.read(4)
-            size = struct.unpack('<' + 'i', read)[0]
+            size = struct.unpack('<L', file.read(4))[0]
             temp = AdjacencyList(size)
             i = -1
             while (i := i+1) < size:
                 while(True):
-                    read = file.read(4)
-                    dest = struct.unpack('<' +'i', read)[0]
+                    dest = struct.unpack('<L', file.read(4))[0]
                     if dest == 0:
                         break
                     temp.addEdge(i, dest)
