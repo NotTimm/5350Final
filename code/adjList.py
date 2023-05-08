@@ -158,7 +158,6 @@ class AdjacencyList:
         result = [-1] * len(self.vertices)
         result[0] = 0
         available = [False] * len(self.vertices)
-
         for i in range(1, len(self.vertices)):
             cur = self.vertices[i].edges
             while cur != None:

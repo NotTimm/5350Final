@@ -29,7 +29,7 @@ adj = adjList.AdjacencyList(1000)
 # adj.randomUniformBuild(50)
 # adj.randomSkewedBuild(2000000)
 adj.randomSkewedBuild(40000)
-# adj.save('test.poo')
+# adj.save('test.poo') # deprecated, has issues with file size 3k complete = 150mb where new = 18mb
 # with open('test.poo', 'rb') as file:
 #     adj1 = pickle.load(file) # new save and load procedure
 # adj.randomPersonalBuild(1000)
