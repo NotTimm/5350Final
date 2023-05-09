@@ -16,7 +16,7 @@ class degreeList:
     def insert(self, value, degree):
         if value.last != None or value.next != None:
             exit(69)
-        print(degree)
+        # print(degree)
         temp = self.degrees[degree]
         value.last = None
         value.next = temp
