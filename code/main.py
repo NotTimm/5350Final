@@ -23,11 +23,11 @@ adj = adjList.AdjacencyList(V)
 # adj.addEdge(2,1)
 # adj.completeBuild()
 # adj.cycleBuild()
-print(time.time()-startTime)
-# adj.randomUniformBuild(1500)
+adj.randomUniformBuild(100000)
 # adj.randomSkewedBuild(200000)
 # adj.randomPersonalBuild(200000)
 # adj.randomSkewedBuild(40000)
+print(time.time()-startTime)
 # distGraph('uniform.out',adj)
 # adj.save('test.poo') # deprecated, has issues with file size 3k complete = 150mb where new = 18mb
 # with open('test.poo', 'rb') as file:
