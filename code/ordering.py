@@ -22,6 +22,16 @@ def smallestOriginalVertOrder(deg):
                 temp = temp.next
     return out
 
+def smallestOriginalVertOrderFlipped(deg): # My personal final order for the coloring
+    out = []
+    for i in range(0, len(deg.degrees)):
+        if deg.degrees[i] != None:
+            temp = deg.degrees[i]
+            while temp != None:
+                out.append(temp)
+                temp = temp.next
+    return out
+
 def uniformRandomVertOrder(adj):
     copyAdj = adj.vertices.copy()
     random.shuffle(copyAdj)

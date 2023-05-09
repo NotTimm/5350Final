@@ -1,4 +1,4 @@
-import pickle, sys
+import pickle, sys, time
 import adjList, degList, coloring, ordering
 
 def distGraph(path, adj):
@@ -8,6 +8,7 @@ def distGraph(path, adj):
         print(str(vert.id) + ', ' + str(vert.degree))
         # file.write(vert.id,',',vert.degree,'\n')
 
+startTime = time.time()
 # sys.setrecursionlimit(10000)
 # print(len(sys.argv), 'arguments.')
 # print('Argument List:', str(sys.argv))
@@ -15,13 +16,15 @@ def distGraph(path, adj):
 #     print("Run with arguments V, E, G, and DIST")
 #     exit()
 # adj = adjList.AdjacencyList(10000)
-adj = adjList.AdjacencyList(500)
+V = int(sys.argv[1])
+adj = adjList.AdjacencyList(V)
 # adj.addEdge(0,1)
 # adj.addEdge(2,3)
 # adj.addEdge(2,1)
 # adj.completeBuild()
 # adj.cycleBuild()
-adj.randomUniformBuild(1500)
+print(time.time()-startTime)
+# adj.randomUniformBuild(1500)
 # adj.randomSkewedBuild(200000)
 # adj.randomPersonalBuild(200000)
 # adj.randomSkewedBuild(40000)
@@ -30,7 +33,7 @@ adj.randomUniformBuild(1500)
 # with open('test.poo', 'rb') as file:
 #     adj1 = pickle.load(file) # new save and load procedure
 # adj.randomPersonalBuild(1000)
-deg = degList.degreeList(adj)
+# deg = degList.degreeList(adj)
 # deg.printList()
 # print(smallestLastVertOrder(adj, deg))
 # adj.serialize('test.poo')
@@ -39,16 +42,16 @@ deg = degList.degreeList(adj)
 # print(id(adj.vertices[deg.degrees[0].id]))
 # print(id(deg.degrees[0]))
 # orderingTemp = ordering.smallestLastVertOrdser(adj, deg)
-orderingTemp1 = ordering.smallestOriginalVertOrder(deg)
-orderingTemp2 = ordering.uniformRandomVertOrder(adj)
+# orderingTemp1 = ordering.smallestOriginalVertOrder(deg)
+# orderingTemp2 = ordering.uniformRandomVertOrder(adj)
 # print(orderingTemp2)
-coloring.greedyColoring(adj, orderingTemp2)
+# coloring.greedyColoring(adj, orderingTemp2)
 # temp = []
 # for i in adj.vertices:
 #     temp.append(i.id)
 # print(temp)
 # adj.printList()
-adj.printList()
+# adj.printList()
 # print(ordering.smallestLastVertOrder(adj, deg))
 # deg.printList()
 # adj1.printList()

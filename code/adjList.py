@@ -49,18 +49,18 @@ class AdjacencyList:
 
     ### Build Scenarios Below ###
 
-    def completeBuild(graph):
+    def completeBuild(self):
         vertI = -1
-        while (vertI := vertI+1) < len(graph.vertices)-1:
+        while (vertI := vertI+1) < len(self.vertices)-1:
             vertO = vertI
-            while (vertO := vertO+1) < len(graph.vertices):
-                graph.addEdge(vertI, vertO)
+            while (vertO := vertO+1) < len(self.vertices):
+                self.addEdge(vertI, vertO)
     
-    def cycleBuild(graph):
+    def cycleBuild(self):
         vertI = -1
-        while (vertI := vertI+1) < len(graph.vertices)-1:
-            graph.addEdge(vertI, vertI+1)
-        graph.addEdge(0, len(graph.vertices)-1)
+        while (vertI := vertI+1) < len(self.vertices)-1:
+            self.addEdge(vertI, vertI+1)
+        self.addEdge(0, len(self.vertices)-1)
 
     def randomUniformBuild(graph, conflicts):
         if conflicts > len(graph.vertices) * (len(graph.vertices)-1)/2:

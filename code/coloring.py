@@ -16,3 +16,15 @@ def greedyColoring(adj, order): # can be given an adj list in both for random gr
 def SLVOColoing(adj, deg):
     slvo = ordering.smallestLastVertOrder(adj, deg)
     greedyColoring(adj, slvo)
+
+def SOVOColoring(adj, deg):
+    sovo = ordering.smallestOriginalVertOrder(deg)
+    greedyColoring(adj, sovo)
+
+def UROColoring(adj):
+    uro = ordering.uniformRandomVertOrder(adj)
+    greedyColoring(adj, uro)
+
+def SOVOFColoring(adj, deg):
+    sovoFlipped = ordering.smallestOriginalVertOrderFlipped(deg)
+    greedyColoring(adj, sovoFlipped)
