@@ -5,11 +5,13 @@ def smallestLastVertOrder(adj, deg):
     removed = -1
     out = []
     while (removed := removed+1) < len(adj.vertices):
+        # print('Step #: ', removed+1)
         smallest = deg.findSmallest()
         deg.removeVert(adj, smallest)
         deg.remove(smallest)
         smallest.removed = True
         out.append(smallest)
+        # adj.printList()
     return out
 
 def smallestOriginalVertOrder(deg):

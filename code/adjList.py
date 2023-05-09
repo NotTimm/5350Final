@@ -109,9 +109,9 @@ class AdjacencyList:
     ### Print Function ###
     
     def printList(self):
-        print("Vert #: ", len(self.vertices))
+        # print("Vert #: ", len(self.vertices))
         for index, i in enumerate(self.vertices):
-            print("VertID: ", index, ", Degree: ", i.degree, ", Color: ", i.color, " }", sep = "", end ="")
+            print("VertID: ", index, ", Degree: ", i.degree, ", Removed: ", i.removed, " }", sep = "", end ="")
             cur = Edge(None, i.edges)
             while cur := cur.next:
                 print("->", cur.destination, sep = "", end = "")
