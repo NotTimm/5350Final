@@ -1,0 +1,2 @@
+seq 500 500 10000 | parallel -j1 "python3 main.py {} | sed 's/^/{}, /'" > ../graphDumps/cycleRuntimeServer.csv
+change numbers and output to appropriate values
