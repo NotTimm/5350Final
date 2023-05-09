@@ -8,5 +8,5 @@ def smallestLastVertOrder(adj, deg):
         deg.removeVert(adj, smallest)
         deg.remove(smallest)
         smallest.removed = True
-        out.append(smallest.id)
+        out.append(smallest)
     return out

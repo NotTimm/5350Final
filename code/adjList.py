@@ -7,6 +7,7 @@ class Vertice:
         self.next = None
         self.last = None
         self.removed = False
+        self.color = None
 
 class Edge:
     def __init__(self, destination, next):
@@ -110,7 +111,7 @@ class AdjacencyList:
     def printList(self):
         print("Vert #: ", len(self.vertices))
         for index, i in enumerate(self.vertices):
-            print("VertID: ", index, ", Degree: ", i.degree, " }", sep = "", end ="")
+            print("VertID: ", index, ", Degree: ", i.degree, ", Color: ", i.color, " }", sep = "", end ="")
             cur = Edge(None, i.edges)
             while cur := cur.next:
                 print("->", cur.destination, sep = "", end = "")
