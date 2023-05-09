@@ -1,17 +1,5 @@
-import pickle
-import adjList, degList
-import sys
-
-def smallestLastVertOrder(adj, deg):
-    removed = -1
-    out = []
-    while (removed := removed+1) < len(adj.vertices):
-        smallest = deg.findSmallest()
-        deg.removeVert(adj, smallest)
-        deg.remove(smallest)
-        smallest.removed = True
-        out.append(smallest)
-    return out
+import pickle, sys
+import adjList, degList, coloring, ordering
 
 sys.setrecursionlimit(10000)
 print(len(sys.argv), 'arguments.')
@@ -38,7 +26,9 @@ deg = degList.degreeList(adj)
 # adj.serialize('test.poo')
 # adj1 = adjList.AdjacencyList.deserialize('test.poo')
 adj.printList()
-adj.greedyColoring()
+
+coloring.greedyColoring(adj)
+print(ordering.smallestLastVertOrder(adj, deg))
 # deg.printList()
 # adj1.printList()
 # adj1.printList()

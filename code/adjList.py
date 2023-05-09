@@ -154,29 +154,6 @@ class AdjacencyList:
                     temp.addEdge(i, dest)
             return temp
         
-    def greedyColoring(self):
-        result = [-1] * len(self.vertices)
-        result[0] = 0
-        available = [False] * len(self.vertices)
-        for i in range(1, len(self.vertices)):
-            cur = self.vertices[i].edges
-            while cur != None:
-                if result[cur.destination] != -1:
-                    available[result[cur.destination]] = True
-                cur = cur.next
-            cr = 0
-            while cr < len(self.vertices):
-                if(available[cr] == False):
-                    break
-                cr += 1
-            result[i] = cr
-            cur = self.vertices[i].edges
-            while cur != None:
-                if result[cur.destination] != -1:
-                    available[result[cur.destination]] = False
-                cur = cur.next
-        for i in range(len(self.vertices)):
-            print("Vert:",i,"---> Color:",result[i])
 
 # if __name__ == '__main__':
 #     lltest = LinkedList()
