@@ -16,6 +16,7 @@ def greedyColoring(adj, order): # can be given an adj list in both for random gr
 def SLVOColoing(adj, deg):
     slvo = ordering.smallestLastVertOrder(adj, deg)
     greedyColoring(adj, slvo)
+    print(ordering.SLVOTerminalClique(slvo))
 
 def SOVOColoring(adj, deg):
     sovo = ordering.smallestOriginalVertOrder(adj, deg)
@@ -23,8 +24,6 @@ def SOVOColoring(adj, deg):
 
 def UROColoring(adj):
     uro = ordering.uniformRandomVertOrder(adj)
-    for i in uro:
-        print(i.id)
     greedyColoring(adj, uro)
 
 def SOVOFColoring(adj, deg):

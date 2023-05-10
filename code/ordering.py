@@ -38,3 +38,12 @@ def uniformRandomVertOrder(adj):
     copyAdj = adj.vertices.copy()
     random.shuffle(copyAdj)
     return copyAdj
+
+def SLVOTerminalClique(order):
+    size = 0
+    for vert in order:
+        if vert.color == size:
+            size += 1
+        else:
+            break
+    return size
