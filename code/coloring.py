@@ -16,7 +16,14 @@ def greedyColoring(adj, order): # can be given an adj list in both for random gr
 def SLVOColoing(adj, deg):
     slvo = ordering.smallestLastVertOrder(adj, deg)
     greedyColoring(adj, slvo)
-    print(ordering.SLVOTerminalClique(slvo))
+    # print(ordering.SLVOTerminalClique(slvo))
+    # o = 1
+    # l = []
+    # for i in slvo:
+    #     l.append(i.degree)
+        # print(i.degree,', ', o, sep='')
+        # o += 1
+    # print(max(l))
 
 def SOVOColoring(adj, deg):
     sovo = ordering.smallestOriginalVertOrder(adj, deg)

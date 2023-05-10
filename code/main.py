@@ -42,7 +42,7 @@ else:
 # coloring.SOVOFColoring(adj, deg)
 # for i in adj.vertices:
 #     print("Vert#: ", i.id, " Color: ", i.color)
-print(time.time()-startTime)
+# print(time.time()-startTime)
 # adj.printList()
 # distGraph('uniform.out',adj)
 # adj.save('test.poo') # deprecated, has issues with file size 3k complete = 150mb where new = 18mb
