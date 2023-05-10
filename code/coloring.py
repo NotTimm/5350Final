@@ -18,13 +18,15 @@ def SLVOColoing(adj, deg):
     greedyColoring(adj, slvo)
 
 def SOVOColoring(adj, deg):
-    sovo = ordering.smallestOriginalVertOrder(deg)
+    sovo = ordering.smallestOriginalVertOrder(adj, deg)
     greedyColoring(adj, sovo)
 
 def UROColoring(adj):
     uro = ordering.uniformRandomVertOrder(adj)
+    for i in uro:
+        print(i.id)
     greedyColoring(adj, uro)
 
 def SOVOFColoring(adj, deg):
-    sovoFlipped = ordering.smallestOriginalVertOrderFlipped(deg)
+    sovoFlipped = ordering.smallestOriginalVertOrderFlipped(adj, deg)
     greedyColoring(adj, sovoFlipped)

@@ -17,23 +17,33 @@ startTime = time.time()
 #     exit()
 # adj = adjList.AdjacencyList(10000)
 V = int(sys.argv[1])
-adj = adjList.AdjacencyList(10000)
+adj = adjList.AdjacencyList.deserialize('graphDumps/squared.adj')
 # adj.addEdge(0,1)
 # adj.addEdge(2,3)
 # adj.addEdge(2,1)
 # adj.completeBuild()
 # adj.cycleBuild()
-# adj.randomUniformBuild(V)
-adj.randomSkewedBuild(V)
+# adj.randomUniformBuild(100000)
+# adj.randomSkewedBuild(100000)
+# adj.randomPersonalBuild(100000)
+# adj.serialize('graphDumps/squared.adj')
 # adj.randomPersonalBuild(200000)
 # adj.randomSkewedBuild(40000)
 deg = degList.degreeList(adj)
 # adj.printList()
-o = ordering.smallestLastVertOrder(adj, deg)
-coloring.greedyColoring(adj, o)
+if V == 1:
+    coloring.UROColoring(adj)
+elif V == 2:
+    coloring.SOVOFColoring(adj,deg)
+elif V == 3:
+    coloring.SLVOColoing(adj,deg)
+else:
+    coloring.SOVOColoring(adj,deg)
+# coloring.SOVOFColoring(adj, deg)
 # for i in adj.vertices:
 #     print("Vert#: ", i.id, " Color: ", i.color)
 print(time.time()-startTime)
+# adj.printList()
 # distGraph('uniform.out',adj)
 # adj.save('test.poo') # deprecated, has issues with file size 3k complete = 150mb where new = 18mb
 # with open('test.poo', 'rb') as file:
@@ -52,10 +62,10 @@ print(time.time()-startTime)
 # orderingTemp2 = ordering.uniformRandomVertOrder(adj)
 # print(orderingTemp2)
 # coloring.greedyColoring(adj, orderingTemp2)
-# temp = []
-# for i in adj.vertices:
-#     temp.append(i.id)
-# print(temp)
+temp = []
+for i in adj.vertices:
+    temp.append(i.color)
+print(max(temp)+1)
 # adj.printList()
 # adj.printList()
 # print(ordering.smallestLastVertOrder(adj, deg))
